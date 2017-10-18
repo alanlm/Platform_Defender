@@ -6,18 +6,21 @@ public class PlatformMovement : MonoBehaviour {
 
 	public float platformSpeed; 
 
+	float offset; 
+
+	void Start() { 
+		// calculate platform offset 
+		offset = (transform.childCount / 2) + 1.5f; 
+	}
+
 	void Update () {
 		// get the edges of the platform 
-		float rightEdge = transform.position.x + (transform.childCount / 2) + 0.5f; 
-		float leftEdge = transform.position.x - (transform.childCount / 2) + 0.5f;  
-
-		// calculate boundary of platform 
-		float angle = Camera.main.fieldOfView * Mathf.Deg2Rad; 
-		float distToCamera = Camera.main.transform.position.z; 
-		float boundary = Mathf.Abs(distToCamera) * Mathf.Tan (angle); 
+		float rightEdge = transform.position.x + offset; 
+		float leftEdge = transform.position.x - offset; 
 
 		// if platform edges reach camera's boundaries, reverse direction 
-		if (rightEdge >= Mathf.Floor (boundary) || leftEdge <= Mathf.Floor (-boundary))
+		if(Camera.main.WorldToScreenPoint(new Vector3(leftEdge, 0f, 0f)).x <= 0 
+			|| Camera.main.WorldToScreenPoint(new Vector3(rightEdge, 0f, 0f)).x >= Screen.width)
 			platformSpeed = -platformSpeed; 
 
 		// move platform 
