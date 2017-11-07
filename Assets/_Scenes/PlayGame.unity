@@ -368,7 +368,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 3
+<<<<<<< HEAD
   jumpHeight: 5
+=======
+>>>>>>> 346058ca4e186937e647983cc61ea97355807b10
 --- !u!1 &500195831
 GameObject:
   m_ObjectHideFlags: 0

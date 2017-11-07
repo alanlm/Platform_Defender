@@ -21,12 +21,15 @@ public class PlayerMovement : MonoBehaviour {
 		Vector3 movement = new Vector3 (moveHorizontal, 0f, 0f); 
 
 		transform.position += movement / 10 * playerSpeed; 
+<<<<<<< HEAD
 
 		// restricting player movement to be within screen Camera.main.WorldToScreenPoint(new Vector3(leftEdge, 0f, 0f)).x
 		transform.position = new Vector3(
 			Mathf.Clamp(transform.position.x, -30, 30),
 			transform.position.y, 
 			transform.position.z); 
+=======
+>>>>>>> 346058ca4e186937e647983cc61ea97355807b10
 	}
 
 	void OnCollisionStay() 
