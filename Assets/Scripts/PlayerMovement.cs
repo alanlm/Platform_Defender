@@ -21,6 +21,12 @@ public class PlayerMovement : MonoBehaviour {
 		Vector3 movement = new Vector3 (moveHorizontal, 0f, 0f); 
 
 		transform.position += movement / 10 * playerSpeed; 
+
+		// restricting player movement to be bounded within screen 
+		transform.position = new Vector3 (
+			Mathf.Clamp (transform.position.x, -30, 30), 
+			transform.position.y, 
+			transform.position.z);  
 	}
 
 	void OnCollisionStay() 
